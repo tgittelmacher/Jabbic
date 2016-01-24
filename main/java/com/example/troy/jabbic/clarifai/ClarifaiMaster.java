@@ -68,4 +68,18 @@ public class ClarifaiMaster {
         String[] dummy = new String[strings.size()];
         return strings.toArray(dummy);
     }
+
+    public String[] getTags(byte[] bytes) {
+        List<RecognitionResult> results= client.recognize(new RecognitionRequest(bytes));
+        ArrayList<String> strings = new ArrayList<>();
+
+        for (RecognitionResult r: results) {
+            for (Tag t: r.getTags()) {
+                strings.add(t.getName());
+            }
+        }
+
+        String[] dummy = new String[strings.size()];
+        return strings.toArray(dummy);
+    }
 }
