@@ -53,6 +53,8 @@
         android:layout_gravity="center_horizontal|top"
         android:hint="Search Tags Here" />
 
+    <include layout="@layout/picture_grid_view"/>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
