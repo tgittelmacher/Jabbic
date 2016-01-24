@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.GridView;
 
 import com.example.troy.jabbic.R;
@@ -32,6 +34,14 @@ public class SearchFragment extends Fragment {
         gridview.setAdapter(new ImageAdapter(getActivity()));
 
         //ASK TROY IF YOU NEED TO ADJUST SEARCH SCREEN PICTURE LIST PADDING, ETC
-        gridview.setPadding(gridview.getPaddingLeft(), 200, gridview.getPaddingRight(), gridview.getBottom() + 200);
+
+        EditText et = (EditText) getView().findViewById(R.id.editText);
+        gridview.setPadding(gridview.getPaddingLeft(), gridview.getPaddingTop(), gridview.getPaddingRight(), gridview.getBottom() + 200);
+
+
+//        if (et.requestFocus()) {
+//            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+//        }
+
     }
 }
