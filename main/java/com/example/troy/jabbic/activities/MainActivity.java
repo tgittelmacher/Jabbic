@@ -7,8 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.Toast;
 
 import com.example.troy.jabbic.R;
+import com.example.troy.jabbic.clarifai.ImageAdapter;
 import com.example.troy.jabbic.fragments.CameraFragment;
 import com.example.troy.jabbic.fragments.ImageViewFragment;
 import com.example.troy.jabbic.fragments.SearchFragment;
@@ -30,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.container, mFragment, "MAIN")
                     .commit();
         }
+
+
     }
 
     @Override
@@ -120,6 +126,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onUpload(View view) {
         makeUploadFragment();
+    }
+
+    public Fragment getFragment() {
+        return mFragment;
     }
 
 }
