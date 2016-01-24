@@ -46,8 +46,20 @@
     tools:context=".MainActivity"
     tools:ignore="MergeRootFrame">
 
-    <include layout="@layout/picture_grid_view"/>
-
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/mainRelLayout"
+        android:orientation="vertical">
+        <include layout="@layout/tag_view"
+            android:id="@+id/tag_view"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"></include>
+        <include layout="@layout/picture_grid_view"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/tag_view"></include>
+    </RelativeLayout>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

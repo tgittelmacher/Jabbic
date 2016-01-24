@@ -10,8 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.troy.jabbic.R;
@@ -26,6 +29,8 @@ import java.net.URI;
  * Created by Troy on 1/23/2016.
  */
 public class MainFragment extends Fragment {
+
+    private String[] tags = {"People", "Cold", "Mountains", "Trees", "Nature", "Snow", "Dave Small", "Rare Pepes"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,6 +47,13 @@ public class MainFragment extends Fragment {
 
         GridView gridview = (GridView) getView().findViewById(R.id.gridview);
         gridview.setAdapter(new ImageAdapter(getActivity()));
+
+        LinearLayout layout = (LinearLayout) getView().findViewById(R.id.tag_scrolls);
+        for (String s: tags) {
+            Button b = new Button(getActivity());
+            b.setText(s);
+            layout.addView(b);
+        }
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
