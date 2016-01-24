@@ -4,8 +4,11 @@ import android.app.Activity;
 import android.app.Application;
 import android.app.Fragment;
 import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +27,7 @@ import com.example.troy.jabbic.clarifai.ImageAdapter;
 
 import java.io.File;
 import java.net.URI;
+import java.util.ArrayList;
 
 /**
  * Created by Troy on 1/23/2016.
@@ -31,6 +35,10 @@ import java.net.URI;
 public class MainFragment extends Fragment {
 
     private String[] tags = {"People", "Cold", "Mountains", "Trees", "Nature", "Snow", "Dave Small", "Rare Pepes"};
+
+    private int expectedImages = 0;
+    private int count = 0;
+    private ArrayList<Bitmap> images = new ArrayList<Bitmap>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -79,6 +87,25 @@ public class MainFragment extends Fragment {
             }
         });
 
+    }
+
+    public synchronized void setExpectedImages(int num) {
+        expectedImages = num;
+        count = 0;
+        images.clear();
+
+    }
+
+    public synchronized boolean receieveImage(String img) {
+        byte[] imageBytes = Base64.decode(img.getBytes(), Base64.DEFAULT);
+        Bitmap bm = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+        images.add(bm);
+
+        if (++count == expectedImages) {
+            //do something to handle setting the view.
+        }
+
+        return true;
     }
 
 }
